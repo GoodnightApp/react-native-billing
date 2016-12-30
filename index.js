@@ -82,6 +82,9 @@ class InAppBilling {
     static getSubscriptionDetailsArray(productIds) {
       return InAppBillingBridge.getSubscriptionDetails(productIds);
     }
+    static loadOwnedPurchasesFromGoogle() {
+      return InAppBillingBridge.loadOwnedPurchasesFromGoogle();
+    }
 }
 
 module.exports = InAppBilling;

@@ -328,6 +328,18 @@ public class InAppBillingBridge extends ReactContextBaseJavaModule implements Ac
         }
     }
 
+    @ReactMethod
+    public void loadOwnedPurchasesFromGoogle(final Promise promise) {
+        if (bp != null) {
+            if (bp.loadOwnedPurchasesFromGoogle()) {
+                promise.resolve(true);
+            } else {
+                promise.reject("EUNSPECIFIED","Could not load own purchases");
+            }
+        } else {
+            promise.reject("EUNSPECIFIED", "Channel is not opened. Call open() on InAppBilling.");
+        }
+    }
     private WritableMap mapTransactionDetails(TransactionDetails details) {
         WritableMap map = Arguments.createMap();
 
